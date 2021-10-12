@@ -6,7 +6,7 @@ const date = new Date();
 const fullYear = date.toISOString().split('T')[0];
 const IN_THEATRES_URL = `https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=2021-09-16&primary_release_date.lte=${fullYear}&api_key=6219d46a85c959170353e7406f7a4b08`;
 
-const TOP_RATED_MOVIES_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&api_key=6219d46a85c959170353e7406f7a4b08&`;
+const TOP_RATED_MOVIES_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&api_key=6219d46a85c959170353e7406f7a4b08&page=1&include_adult=false`;
 
 
 const menuLinks = document.querySelectorAll('.menu-link');
@@ -34,20 +34,20 @@ menuLinks.forEach((link, index) => {
                 const data = await res.json();
                 showMovies(data.results);
             }
+        } else if (index === 1) {
+            getTopRatedMovies(TOP_RATED_MOVIES_URL);
+            async function getTopRatedMovies(url) {
+                const res = await fetch(url);
+                const data = await res.json();
+                showMovies(data.results);
+            }
         }
     });
 
 });
 
 
-// else if (index === 1) {
-//     getTopRatedMovies(TOP_RATED_MOVIES_URL);
-//     async function getTopRatedMovies(url) {
-//         const res = await fetch(url);
-//         const data = await res.json();
-//         showMovies(data.results);
-//     }
-// }
+
 
 
 
