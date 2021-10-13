@@ -50,8 +50,6 @@ menuLinks.forEach((link, index) => {
 
 
 
-
-
 function showMovies(movies) {
     main.innerHTML = '';
 
