@@ -92,6 +92,7 @@ img {
 .user-info {
   color: #eee;
   margin-left: 2rem;
+  max-width: 400px;
 }
 
 .user-info h2 {
